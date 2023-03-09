@@ -60,8 +60,8 @@ const diceGame = (player1, player2) => {
     if (player1 > 12 || player2 > 12 || player1 < 2 || player2 < 2) {
         return "only numbers between 2 and 12 are valid";
     }
-    console.log(num);
-    if (Math.abs(num - player1) === Math.abs(num - player2)) {
+
+    if (player1ABW === Math.abs(num - player2)) {
         return "draw";
     }
     else if (Math.abs(num - player1) > Math.abs(num - player2)) {
@@ -70,6 +70,9 @@ const diceGame = (player1, player2) => {
     else if (Math.abs(num - player1) < Math.abs(num - player2)) {
         return "player1";
     }
+
     return "error";
+
+    return "Player 1 hat die abweichung von";
 };
 console.log(diceGame(2, 12));

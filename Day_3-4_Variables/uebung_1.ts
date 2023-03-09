@@ -87,17 +87,23 @@ const diceGame = (player1: number, player2: number): string => {
     const num1 = Math.floor(Math.random() * 6 + 1)
     const num2 = Math.floor(Math.random() * 6 + 1)
     const num = num1 + num2
+    let winner: string = ""
+    const player1ABW: number = Math.abs(num - player1);
+    const player2ABW: number = Math.abs(num - player2);
+
+
     if (player1 > 12 || player2 > 12 || player1 < 2 || player2 < 2) {
         return "only numbers between 2 and 12 are valid"
     }
     console.log(num)
-    if (Math.abs(num - player1) === Math.abs(num - player2)) {
-        return "draw"
-    } else if (Math.abs(num - player1) > Math.abs(num - player2)) {
-        return "player2"
-    } else if (Math.abs(num - player1) < Math.abs(num - player2)) {
-        return "player1"
+    if (player1ABW === player2ABW) {
+        winner = "unentschieden"
+    } else if (player1ABW > player2ABW) {
+        winner = "player2 hat gewonnen"
+    } else if (player1ABW < player2ABW) {
+        winner = "player1 hat gewonnen"
     }
-    return "error"
+    return `Player1 hat eine Abweichung von ${player1ABW} und Player2 hat eine Abweichung von ${player2ABW}, das Würfelergebnis ist ${num}. Das Ergebnis ist ${winner} `
 }
+
 console.log(diceGame(2, 12)) 
